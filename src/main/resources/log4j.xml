@@ -27,8 +27,8 @@
         </layout>
     </appender>
 
-    <logger name="org.apache.olingo.sample.annotation" additivity="false">
-        <level value="trace" />
+    <logger name="com.frank.odatacarstore.annotation" additivity="false">
+        <level value="debug" />
         <appender-ref ref="console" />
     </logger>
 
