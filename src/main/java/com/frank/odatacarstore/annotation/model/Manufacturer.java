@@ -1,0 +1,77 @@
+package com.frank.odatacarstore.annotation.model;
+
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.List;
+import org.apache.olingo.odata2.api.annotation.edm.EdmEntitySet;
+import org.apache.olingo.odata2.api.annotation.edm.EdmEntityType;
+import org.apache.olingo.odata2.api.annotation.edm.EdmKey;
+import org.apache.olingo.odata2.api.annotation.edm.EdmNavigationProperty;
+import org.apache.olingo.odata2.api.annotation.edm.EdmNavigationProperty.Multiplicity;
+import org.apache.olingo.odata2.api.annotation.edm.EdmProperty;
+
+/**
+ *
+ */
+@EdmEntityType(namespace = "OData")
+@EdmEntitySet(name = "Manufacturers")
+public class Manufacturer {
+
+  @EdmKey
+  @EdmProperty
+  private String id;
+  @EdmProperty
+  private String name;
+  @EdmProperty
+  private Calendar founded;
+  @EdmProperty
+  private Address address;
+  @EdmNavigationProperty(name = "Cars", toType = Car.class, toMultiplicity = Multiplicity.MANY)
+  private List<Car> cars = new ArrayList<Car>();
+
+  public String getId() {
+    return id;
+  }
+
+  public void setId(String id) {
+    this.id = id;
+  }
+
+  public String getName() {
+    return name;
+  }
+
+  public void setName(String name) {
+    this.name = name;
+  }
+
+  public Calendar getUpdated() {
+    return founded;
+  }
+
+  public void setFounded(Calendar updated) {
+    this.founded = updated;
+  }
+
+  public Address getAddress() {
+    return address;
+  }
+
+  public void setAddress(Address address) {
+    this.address = address;
+  }
+
+  public List<Car> getCars() {
+    return cars;
+  }
+
+  public void setCars(List<Car> cars) {
+    this.cars = cars;
+  }
+
+  @Override
+  public String toString() {
+    return "Manufacturer{" + "id=" + id + ", name=" + name + ", updated=" + founded + 
+            ", address=" + address + ", cars=" + cars.size() + '}';
+  }
+}
